@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="mobileQuantity" type="text" class="form-control text-center" value="1">
+                           <button  id="plusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="mobileAmount">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusBtnCasing" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="casingQuantity" type="text" class="form-control text-center" value="1">
+                           <button id="plusBtnCas" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="casingAmount">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$1,278</h5>
+                        <h5>$0</h5>
+                        <h5>$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <script>
+      // plus button event handler
+      const plusBtn = document.getElementById("plusBtn");
+      plusBtn.addEventListener("click",function(){
+         const mobileQuantity = document.getElementById("mobileQuantity").value;
+         const numOfMobile = parseInt(mobileQuantity);
+         const totalMobile = numOfMobile + 1 ;
+         document.getElementById("mobileQuantity").value = totalMobile ;
+         const mobileAmount = document.getElementById("mobileAmount").innerText;
+         const numAmount = parseInt(mobileAmount);
+         const totalAmount = totalMobile * 1259 ;
+         document.getElementById("mobileAmount").innerText = totalAmount;
+      })
+       // minus button event handler
+      const minusBtn = document.getElementById("minusBtn");
+      minusBtn.addEventListener("click",function(){
+         const mobileQuantity = document.getElementById("mobileQuantity").value;
+         if(mobileQuantity >= 0){
+            const numOfMobile = parseInt(mobileQuantity);
+            const totalMobile = numOfMobile - 1 ;
+            document.getElementById("mobileQuantity").value = totalMobile ;
+         const mobileAmount = document.getElementById("mobileAmount").innerText;
+         if(mobileAmount >= 1259){  
+         const numAmount = parseInt(mobileAmount);
+         const totalAmount = 1259 * totalMobile ;
+         document.getElementById("mobileAmount").innerText = totalAmount;
+         }
+         }
+   
+      })
+   // casing plus event handler
+   const plusBtnCas = document.getElementById("plusBtnCas");
+      plusBtnCas.addEventListener("click",function(){
+         const casingQuantity = document.getElementById("casingQuantity").value;
+         const numOfCasing = parseInt(casingQuantity);
+         const totalCasing = numOfCasing + 1 ;
+         document.getElementById("casingQuantity").value = totalCasing ;
+         const casingAmount = document.getElementById("casingAmount").innerText;
+         const numCasing = parseInt(casingAmount);
+         const totalCasingAmount = totalCasing * 59 ;
+         document.getElementById("casingAmount").innerText = totalCasingAmount;
+      })
+      // casing minus handler
+      const minusBtnCasing = document.getElementById("minusBtnCasing");
+      minusBtnCasing.addEventListener("click",function(){
+         const casingQuantity = document.getElementById("casingQuantity").value;
+         if(casingQuantity >= 0){
+            const numOfCasing = parseInt(casingQuantity);
+            const totalCasing = numOfCasing - 1 ;
+            document.getElementById("casingQuantity").value = totalCasing ;
+         const casingAmount = document.getElementById("casingAmount").innerText;
+         if(casingAmount >= 59){  
+         const numCasing = parseInt(casingAmount);
+         const totalCasingAmount = 59 * totalCasing ;
+         document.getElementById("casingAmount").innerText = totalCasingAmount;
+         }
+         }
+   
+      })
+
+   </script>
+</body>
+
+</html>
